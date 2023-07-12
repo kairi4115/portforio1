@@ -103,8 +103,40 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         //
+        request()->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'price' => 'required|integer',
+            'category' => 'required',
+            'image' => 'mimes:jpeg,png,jpg,gif,svg'],
+
+            ['name.required' => '商品を入力してください',
+             'description' => '詳細を入力してください',
+            'price.required' => '値段を入力してください',
+            'category.reuired' => 'カテゴリーを入力してください。'
+        ]);
+        
+         $product =Product::find($id);
+         $name = $product->image;
+         if($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('images');
+            $image->move($destinationPath,$name);
+         }
+
+          $product->update([
+            'name' => request('name'),
+            'description' => request('description'),
+            'price' => request('price'),
+            'category_id' =>request('category'),
+            'image' => $name
+          ]);
+
+          return redirect()->route('product.index')->with('message', '商品情報が更新されました');
     }
 
+     
     /**
      * Remove the specified resource from storage.
      *
@@ -114,5 +146,8 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+        $product = product::find($id);
+        $product->delete();
+        return redirect('product')->with('message', '商品情報が削除されました');  
     }
 }

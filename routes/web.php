@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TopController;
+use Illuminate\Support\Facades\App;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,13 +17,15 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
 Route::resource('category', CategoryController::class);
 Route::resource('product', productController::class);
+Route::get('/', [ProductController::class, 'productTop']);
+Route::get('product/{id}',[ProductController::class, 'show']);
+
+Route::get('top',[TopController::class, 'index']);
+Route::get('top{id}',[TopController::class, 'show'])->name('top.show');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

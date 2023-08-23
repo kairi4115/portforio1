@@ -1,0 +1,178 @@
+/* app.css もしくは適切なCSSファイルに追加 */
+/* 編集ページ　top.edit */
+.recipe-edit-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.step-label {
+    font-size: 18px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.step-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.btn-update {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-update:hover {
+    background-color: #0056b3;
+}
+
+/* 一覧ページ　top.show */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+  }
+
+  .product-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+  }
+
+  .product-details {
+    text-align: center;
+  }
+
+  .product-details img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .product-details h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .product-details p {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+
+  .product-details p:last-child {
+    margin-bottom: 0;
+  }
+
+  .product-details p.price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff5722;
+  }
+
+  .recipe-form {
+    margin-top: 40px;
+    text-align: left;
+  }
+
+  .recipe-form label {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .recipe-form textarea {
+    width: 100%;
+    height: 150px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    padding: 10px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .recipe-form button {
+    margin-top: 20px;
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  .recipe-form button:hover {
+    background-color: #ff3d00;
+  }
+
+ .centered-text {
+  text-align: center;
+ }
+ 
+  /* スタイルを編集ボタンに適用 */
+  edit-button {
+    display: inline-block;
+    background-color:rgb(255, 255, 255);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+ 
+/* スタイルを削除ボタンに適用 */
+.recipe-steps form button {
+  display: inline-block;
+  background-color: #e74c3c;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.recipe-steps form button:hover {
+  background-color: #c0392b;
+}
+
+
+/* Twitterアイコンのスタイル */
+.fab.fa-twitter {
+  color: #1DA1F2; /* Twitterのブルー色 */
+  font-size: 24px; /* フォントサイズを調整 */
+  margin-right: 8px; /* Twitterアイコンとテキストの間隔を調整 */
+}

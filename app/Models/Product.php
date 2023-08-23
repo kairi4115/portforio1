@@ -13,4 +13,9 @@ class Product extends Model
     public function category(){
         return $this->hasOne('App\Models\Category', 'id', 'category_id');
     }
+
+    public function recipeSteps()
+    {
+        return $this->hasMany(RecipeStep::class);
+    }
 }

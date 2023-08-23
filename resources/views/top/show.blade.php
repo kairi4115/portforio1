@@ -3,61 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@your_twitter_handle">
+  <meta name="twitter:title" content="Product Details">
+  <meta name="twitter:description" content="{{ $product->description }}">
+  <meta name="twitter:image" content="{{ asset('images') }}/{{ $product->image }}">
   <title>Product Details</title>
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      margin: 0;
-      padding: 0;
-    }
-
-    .product-container {
-      max-width: 800px;
-      margin: 50px auto;
-      background-color: #fff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-      padding: 20px;
-    }
-
-    .product-details {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .product-details img {
-      max-width: 100%;
-      border-radius: 8px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .product-details h1 {
-      font-size: 28px;
-      margin-bottom: 10px;
-      color: #333;
-    }
-
-    .product-details p {
-      font-size: 16px;
-      color: #666;
-      line-height: 1.6;
-      margin-bottom: 10px;
-    }
-
-    .product-details p:last-child {
-      margin-bottom: 0;
-    }
-
-    .product-details p.price {
-      font-size: 24px;
-      font-weight: bold;
-      color: #ff5722;
-    }
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
   <div class="product-container">
@@ -66,7 +19,46 @@
       <h1>{{ $product->name }}</h1>
       <p>{{ $product->description }}</p>
       <p class="price">Price: {{ $product->price }} 円 + 税</p>
-      <!-- その他の詳細情報を表示するための要素を追加 -->
+
+       <!-- Twitter投稿ボタン -->
+       <a href="{{ route('product.tweet',['id' => $product->id]) }}">
+          <i class="fab fa-twitter">ツイート</i> 
+        </a>
+
+      <div class="recipe-form">
+        <form action="{{ route('recipe.steps.store', ['product' => $product->id]) }}" method="post">
+          @csrf
+          <div class="form-group">
+            <label for="step">作り方</label>
+            <textarea class="form-control" name="step" id="step" placeholder="作り方を入力してください"></textarea>
+          </div>
+          <button type="submit">作り方を投稿</button>
+        </form>
+
+       
+
+        <a href="{{ route('top.edit', ['product' => $product->id]) }}" class="edit-button">編集</a>
+
+        <!-- レシピのステップを表示 -->
+        <div class="recipe-steps">
+          <h2>作り方</h2>
+          @if($product->recipeSteps->count() > 0)
+            <ul>
+              @foreach($product->recipeSteps as $step)
+                <li class="centered-text">{{$step->step}}
+                <form action="{{ route('top.steps.destroy', ['step' => $step->id]) }}" method="post">
+                  @csrf
+                  @method('delete')
+                  <button type="submit">削除</button>
+                </form>
+              </li>
+              @endforeach
+            </ul>
+          @else
+            <p>レシピのステップはありません</p>
+          @endif
+        </div>
+      </div>
     </div>
   </div>
 </body>

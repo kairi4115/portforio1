@@ -95,6 +95,7 @@
 </head>
 <body>
 <div class="menu-container">
+<a href="{{route('product.create') }}" class="btn btn-primary">商品を追加する</a>
   @foreach($categories as $category)
   <div class="menu-category">
     {{$category->name}}

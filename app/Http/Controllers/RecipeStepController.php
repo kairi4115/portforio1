@@ -21,6 +21,8 @@ class RecipeStepController extends Controller
 
     $product->recipeSteps()->create([
         'step' => $request->input('step'),
+        'updated_at' => now(),
+        'created_at' => now(),
     ]);
     return redirect()->route('top.show', ['product' => $product->id])->with('success', 'レシピのステップを投稿しました');
 
